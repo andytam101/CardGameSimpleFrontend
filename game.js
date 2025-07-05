@@ -38,7 +38,7 @@ $(document).ready(() => {
         }
 
         const gridPos = parseInt(e.target.id.split("-")[1])
-        const gameId = parseInt(sessionStorage.getItem("gameId"))
+        const gameId = sessionStorage.getItem("gameId")
         const player = parseInt(sessionStorage.getItem("player"))
 
         const data = {
@@ -70,7 +70,7 @@ const handleMessage = messageJson => {
             data: {
                 type: "ready",
                 name: "ready",
-                gameId: parseInt(sessionStorage.getItem("gameId")),
+                gameId: sessionStorage.getItem("gameId"),
                 player: parseInt(sessionStorage.getItem("player"))
             }
         }
@@ -84,6 +84,7 @@ const handleMessage = messageJson => {
 }
 
 const handleSetup = data => {
+    console.log(data.gameId)
     sessionStorage.setItem("gameId", data.gameId)
     sessionStorage.setItem("player", data.player)
 
